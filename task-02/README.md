@@ -62,3 +62,14 @@ var server = http.createServer(function(req, res) {
 > 当然上面只是作为演示，真实环境可不能这样干，子页面多的话岂不奔溃
 
 ## 总结
+搭建一个简单的本地服务器，分为以下步骤:
+====================================
+- 引入http模块 ```require('http')```
+- 开启服务
+    ```javascript 
+    createServer(function(){ // 执行代码 })
+    ```
+    - 回调函数接收两个参数，requirs和response
+    - res: 请求数据
+    - req: 响应数据
+- 监听端口 ```listen()```

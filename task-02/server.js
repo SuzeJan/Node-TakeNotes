@@ -1,4 +1,4 @@
-var http = require('http');
+const http = require('http');
 
 var server = http.createServer(function(req, res) {
     // console.log('有人访问!');

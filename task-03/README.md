@@ -1,20 +1,5 @@
 # 理解文件系统模块
 如果每次都是像task-02中提到通过case来判断文件，不方便也很麻烦，所以可以观察wampServer软件里面，都会通过一个叫做 www 的目录，所有文件读写操作都对此目录操作
-```javascript
-var server = http.createServer(function(req, res) {
-    switch(req.url) {
-        case '/index.html':
-            res.write('这是主页');
-            break;
-        case '/about.html':
-            res.write('这是关于');
-            break;
-        default:
-            res.write('404页面');
-            break;
-    }
-});
-```
 
 ```javascript
 // 引入file system模块

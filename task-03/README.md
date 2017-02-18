@@ -20,13 +20,13 @@ fs.readFile('data.txt', function(err, data) {
         }
 })
 ```
+> 注意: 在读取文件时如果文件不存在就会报错误，存在就会返回null
 
 ```javascript
 fs.writeFile('data.txt', '写入信息', function(err) {
   console.log(err);
 });
 ```
-> 注意: 如果文件不存在就会报错误，存在就会返回null
 
 - ####这里文件的操作分为异步和同步
   - 异步: 多个操作可以同时进行

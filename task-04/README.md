@@ -9,7 +9,7 @@
 - get: 数据在URL中一起传输```http://localhost/?user=suze&password=123456```
 - post
 
-前台请求：\<form action="http://localhost/test" method="get"><br>
+前台请求：<form action="http://localhost/test" method="get"><br>
 后台请求：请求的数据就在req.url中，数据就是"/test?user=suze&password=123456"
 
 > 方法一: 最笨的方式获取到请求信息

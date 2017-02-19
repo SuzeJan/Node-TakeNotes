@@ -78,7 +78,7 @@ http.createServer(function(req, res) {
     var obj = urlLib.parse(req.url, true);
     
     var GET = obj.query;
-    var url = obj.hostname;
+    var url = obj.pathname;
     // 在Chrome浏览器下，会返回/test { user: 'suze', password: '123456' } 和 /favicon.ico {}
     console.log(url, GET);
 
@@ -86,3 +86,28 @@ http.createServer(function(req, res) {
     res.end();
 }).listen(80);
 ```
+
+## 总结
+- 前台通过form、ajax、jsonp等方式来请求，但是后台常用就是GET、POST两者
+- 后台通过GET，数据是通过url来发送的，所以需要通过手段来把url里面的数据截出来
+- 自己可以通过.split()来截，但是通过nodeJS封装的方法更为方便、快捷
+  - querystring()方法只能截取指定格式的(user=123&password=123类似这样)，如果数据内有地址，比如/test?user=123&password=123此方法就无能为力了
+  - url()方法，他可以解析一个完整的地址，比如```'http://user:pass@host.com:8080/p/a/t/h?query=string#hash'```
+    - url.parse(url)，上面链接被解析如下
+    ```javascript
+    Url {
+      protocol: 'http:',
+      slashes: true,
+      auth: 'user:pass',
+      host: 'host.com:8080',
+      port: '8080',
+      hostname: 'host.com',
+      hash: '#hash',
+      search: '?query=string',
+      query: 'query=string',
+      pathname: '/p/a/t/h',
+      path: '/p/a/t/h?query=string',
+      href: 'http://user:pass@host.com:8080/p/a/t/h?query=string#hash' 
+    }
+    ```
+    > 如果url.parse(url, ture)，第二个参数设置true，Url.query属性值就是JSON对象{'query': string}

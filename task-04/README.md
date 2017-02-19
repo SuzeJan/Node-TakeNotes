@@ -6,8 +6,7 @@
 - 但是无论是前台还是后台，都是通过http协议发送或接收，只不过前台方式很多种
 
 对于后台，常用的方式两种
-- get: 数据在URL中一起传输
-```http://localhost/?user=suze&password=123456```
+- get: 数据在URL中一起传输```http://localhost/?user=suze&password=123456```
 - post
 
 前台请求：\<form action="http://localhost/test" method="get"><br>

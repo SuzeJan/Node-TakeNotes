@@ -13,13 +13,13 @@
 后台请求：请求的数据就在req.url中，数据就是"/test?user=suze&password=123456"
 
 > 方法一: 最笨的方式获取到请求信息
+
 ```javascript
 http.createServer(function(req, res) {
     // 请求成功时req.url ==> /test?user=suze&password=123456
     console.log(req.url);
     var GET = {};
     var url = '';
-    
     if (req.url.indexOf('?') != -1) {
         // 存的地址: arr[0] ==> test
             // 存的数据: arr[1] ==> user=suze&password=123456
@@ -41,19 +41,18 @@ http.createServer(function(req, res) {
     }
     // 在Chrome浏览器下，会返回/test { user: 'suze', password: '123456' } 和 /favicon.ico {}
     console.log(url, GET);
-
     res.write('请求成功！');
     res.end();
 }).listen(80);
 ```
 
 > 方式二: 利用nodeJS封装的querystring()方法
+
 ```javascript
 const  querystring = require('querystring');
 http.createServer(function(req, res) {
     var GET = {};
     var url = '';
-    
     if (req.url.indexOf('?') != -1) {
             var arr = req.url.split('?');
             url = arr[0];
@@ -71,6 +70,7 @@ http.createServer(function(req, res) {
 ```
 
 > 方式三: 利用nodeJS封装的URL()方法
+
 ```javascript
 const urlLib = require('url');
 http.createServer(function(req, res) {
@@ -80,7 +80,6 @@ http.createServer(function(req, res) {
     var url = obj.pathname;
     // 在Chrome浏览器下，会返回/test { user: 'suze', password: '123456' } 和 /favicon.ico {}
     console.log(url, GET);
-
     res.write('请求成功！');
     res.end();
 }).listen(80);

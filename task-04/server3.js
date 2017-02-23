@@ -5,7 +5,7 @@ const http = require('http');
 const urlLib = require('url');
 
 http.createServer(function(req, res) {
-    var obj = urlLib.parse('http://user:pass@host.com:8080/p/a/t/h?query=string#hash');
+    var obj = urlLib.parse(req.url, true);
 
     var GET = obj.query;
     var url = obj.pathname;
